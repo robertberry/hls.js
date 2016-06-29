@@ -1136,6 +1136,7 @@ _checkBuffer() {
 
         if (this.stalled && playheadMoving) {
           this.stalled = false;
+          this.hls.trigger(Event.PLAYBACK_RESUMED);
           logger.log(`playback not stuck anymore @${currentTime}`);
         }
         // check buffer upfront
@@ -1150,6 +1151,7 @@ _checkBuffer() {
             if(!this.stalled) {
               this.seekHoleNudgeDuration = 0;
               logger.log(`playback seems stuck @${currentTime}`);
+              this.hls.trigger(Event.PLAYBACK_STALLED);
               this.hls.trigger(Event.ERROR, {type: ErrorTypes.MEDIA_ERROR, details: ErrorDetails.BUFFER_STALLED_ERROR, fatal: false});
               this.stalled = true;
             } else {

@@ -73,6 +73,10 @@ module.exports = {
   FPS_DROP: 'hlsFpsDrop',
   //triggered when FPS drop triggers auto level capping - data: {level, droppedlevel}
   FPS_DROP_LEVEL_CAPPING: 'hlsFpsDropLevelCapping',
+  // fired when the buffer is out of data and the video is stalled on the current frame
+  PLAYBACK_STALLED: 'hlsPlaybackStalled',
+  // fired when the video is no longer stalled
+  PLAYBACK_RESUMED: 'hlsPlaybackResumed',
   // Identifier for an error event - data: { type : error type, details : error details, fatal : if true, hls.js cannot/will not try to recover, if false, hls.js will try to recover,other error specific data}
   ERROR: 'hlsError',
   // fired when hls.js instance starts destroying. Different from MEDIA_DETACHED as one could want to detach and reattach a media to the instance of hls.js to handle mid-rolls for example
